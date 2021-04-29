@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row" style="margin:5%">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+        <h3><b>ABOUT US</b></h3><br>
+    </div>
+        <p class="text-justify"><b>MyTrends</b> is one of India’s leading fashion houses today.We specialize in combining cutting edge fashion
+       with an affordable price tag. All our products are designed in-house by
+       our super talented young team of designers, with our multi-tasking, millennial women customers in mind.
+       Accredited with the coveted ISO 9001:2019 certification for Quality Management Systems, we promise products
+       that meet the highest international standards of quality and processes.
+       Since empowerment and expression lie at the core of our design philosophy, we have something for everyone! So, whether
+       you like to keep one step ahead of trends or perfect your signature style, we’re sure we’ve got something you’ll love.</p>
+</div>
+<div class="row" style="margin:5%">
+    <div class="col-4 text-center">
+        <h6><b>KIDS</b></h6><br>
+        <img src="{% static 'images/kids.jpg' %}" class="rounded-circle about-img" alt="about"><br><br>
+        <p class="text-justify">Your little princess deserves only the best,MyTrends showcases the
+            right concoction of brands and merchandise to give you the ‘wow'
+            shopping experience. Made from soft fabric,these branded garments
+            come in a host of colourful motifs and patterns.</p>
+    </div>
+    <div class="col-4 text-center">
+        <h6><b>MENS</b></h6><br>
+        <img src="{% static 'images/mens.jpg' %}" class="rounded-circle about-img" alt="about"><br><br>
+        <p class="text-justify">Men Clothing, it is true what people say; clothes indeed do make a man.
+            What you wear speaks volumes about not just your style but also your
+            personality.</p>
+    </div>
+    <div class="col-4 text-center">
+        <h6><b>WOMENS</b></h6><br>
+        <img src="{% static 'images/womens.jpg' %}" class="rounded-circle about-img" alt="about"><br><br>
+        <p class="text-justify">Dresses are a girl’s best friend, perfect for any occasion and always
+            reliable. Whether it is summer or winter or just another rainy day,
+            dresses are super versatile and loved all year around.</p>
+    </div>
+</div>
+{% endblock %}

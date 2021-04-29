@@ -1,0 +1,20 @@
+{% load static %}
+<button data-toggle="modal" data-target="#ModalLoginForm3" class="btn btn-secondary btn-block my_cart_button order-sucess">
+    <b>Continue to Checkout</b>
+</button>
+<div id="ModalLoginForm3" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Thankyou...</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Your order has been successfully completed.</p>
+            </div><!-- /.modal-body -->
+            <a href="{% url 'shopapp:allProductsCat' %}" class="btn btn-secondary btn-block my_cart_button"><b>Back to home</b></a>
+       </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

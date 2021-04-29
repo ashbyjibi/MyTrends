@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="go-back">
+   <h onclick="history.back(-1)"><i class="fa fa-arrow-left" aria-hidden="true" style="cursor:pointer"></i></h>
+</div>
+{% if not cart_items %}
+   <div class="container" style="background-color:#ffe6f3">
+       <div class="text-center">
+           <br>
+           <h2 class="text-center cart_title">
+              Your shopping cart is empty
+           </h2>
+           <br>
+           <h5 class="text-center">
+               Please click <a href="{% url 'shopapp:allProductsCat' %}"><b>Here</b></a>
+           </h5>
+       </div><br>
+</div><br><br>
+{% else %}
+   <div>
+       <div class="text-center">
+           <br>
+           <h3 class="text-center">
+              <b>Items In Your Bag</b>
+           </h3>
+           <br>
+       </div>
+   </div>
+   <div class="row mx-auto">
+       <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+           <table class="table my_cart_table">
+               <thead class="my_cart_thead">
+               <tr>
+                   <th colspan="5" class="text-center">Your Items</th>
+               </tr>
+               </thead>
+               <tbody>
+               {% for cart_item in cart_items %}
+               <tr>
+                   <td>
+                       <a href="{{cart_item.product.get_url}}"><img src={{cart_item.product.image.url}} class="float-left cart_image"></a>
+                   </td>
+                   <td class="text-lef">
+                       <b>{{cart_item.product.name}}</b>
+                       <br>
+                       SKU : {{cart_item.product.id}}
+                       <br>
+                       Unit Price : {{cart_item.product.price}} <br>
+                       QTY : {{cart_item.quantity}}
+                   </td>
+                   <td>$ {{cart_item.sub_total}}</td>
+                   {% if cart_item.quantity < cart_item.product.stock %}
+                   <td>
+                       <a href="{% url 'cart:add_cart' cart_item.product.id %}" class="cart_a"> <i class="fa fa-plus cart_icon"></i></a>&nbsp;
+                       <a href="{% url 'cart:cart_remove' cart_item.product.id %}" class="cart_icon"><i class="fa fa-minus cart_icon"></i></a>&nbsp;<a href="{% url 'cart:full_remove' cart_item.product.id %}" class="cart_icon"><i class="fa fa-trash cart_icon"></i></a>
+                   </td>
+                   {% else %}
+                   <td>
+                    &nbsp;  <a href="{% url 'cart:cart_remove' cart_item.product.id %}" class="cart_a"><i class="fa fa-minus cart_icon"></i></a>&nbsp;<a href="{% url 'cart:full_remove' cart_item.product.id %}" class="cart_icon"><i class="fa fa-trash cart_icon"></i></a>
+                   </td>
+                   {% endif %}
+               </tr>
+               {% endfor %}
+               </tbody>
+           </table>
+       </div>
+       <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+           <table class="table my_cart_table">
+               <thead class="my_cart_thead">
+               <tr>
+                   <th class="text-center">
+                       Checkout
+                   </th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr>
+                   <td>
+                       Please review your shopping cart items before proceeding with the order payment.
+                   </td>
+               </tr>
+               <tr>
+                   <td class="text-left">
+                       Subtotal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong> $ {{ total }} </strong><br>
+                       Shipping &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong> Gratis </strong><br>
+                   </td>
+               </tr>
+               <tr>
+                   <td>
+                       Grand Total &nbsp;<strong> $ {{ total }} </strong>
+                   </td>
+               </tr>
+               </tbody>
+           </table>
+           <div class="mx-auto">
+               <a href="{% url 'shopapp:allProductsCat' %}" class="btn btn-secondary btn-block my_cart_button"><b>Continue Shopping</b></a>
+               {% if user.is_authenticated %}
+                  <a href="{% url 'checkout:order' %}" class="btn btn-secondary btn-block my_cart_button"><b>Proceed to Checkout</b></a>
+               {% else %}
+                  <a href="{% url 'accounts:checkoutLogin' %}" class="btn btn-secondary btn-block my_cart_button"><b>Proceed to Checkout</b></a>
+               {% endif %}
+           </div>
+       </div>
+</div><br>
+{% endif %}
+{% endblock %}

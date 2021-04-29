@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div>
+   {% if category %}
+      <img src="{{category.image.url}}" alt="{{category.name}}" style="width:1500px;height:600px">
+</div>
+<br><br>
+<div>
+    <h4>{{category.name}} Collections</h4>
+    <br>
+    <div class="text-justify">
+        <p>{{category.desc}}</p>
+    </div>
+</div>
+<br>
+   {% else %}
+   <div>
+     {% include 'carousel.html' %}
+   </div>
+   <br><br>
+   <div class="text-center" >
+       <h4>Featured Collections</h4>
+   </div><br><br>
+   {% endif %}
+   <section class="section new-section">
+     <div class="row">
+        {% for product in products.object_list %}
+           <div>
+               <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                   <div class="product" >
+                       <a class="img-wrapper"> <img  src="{{product.image.url}}" alt="{{product.name}}" style="width:240px;height:280px"></a>
+                       <div class="info">
+                           <div class="title">{{product.name}}</div>
+                           <div class="price sale">${{product.price}}</div>
+                           {% if product.oldprice > product.price  %}
+                               <div class="price old">${{product.oldprice}}</div>
+                           {% endif %}
+                       </div>
+                      <div class="actions-wrapper navf">
+                         <a  href="{{product.get_url}}" class=" fas fa-shopping-bag">View Details</a>
+                      </div>
+                   </div>
+               </div>
+           </div>
+        {% endfor %}
+    </div><br>
+    <div class="mx_auto">
+        <div class="text-center">
+           {% for pg in products.paginator.page_range %}
+              <a href="?page={{pg}}" class="btn btn-light btn-sm {% if products.number == pg %} activate {% endif %}">{{pg}}</a>
+           {% endfor %}
+        </div>
+    </div>
+   </section><br><br>
+{% endblock %}
+
+
+
+
+

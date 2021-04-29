@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div  style="background-image: url({% static 'images/register.jpg' %})" class="reg-img"><br><br>
+        <p class="text-center"><b>Please fill in this form to create an account.</b></p>
+        <form role="form" action="{% url 'accounts:register' %}" method="POST" class="form-margin">
+        {% csrf_token %}
+            <div>
+                {% for message in messages %}
+                    <p class="navf text-center error-txt"><b>{{message}}</b></p>
+                {% endfor %}
+            </div>
+            <input type="hidden" name="_token" value="">
+            <div class="form-group">
+                <b><label class="control-label">First Name</label></b>
+                <div>
+                    <input type="text" placeholder="Enter Firstname" class="form-control input-lg" name="first_name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <b><label class="control-label">Last Name</label></b>
+                <div>
+                    <input type="text" placeholder="Enter Lastname" class="form-control input-lg" name="last_name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <b><label class="control-label">Username</label></b>
+                <div>
+                    <input type="text" placeholder="Enter Username"class="form-control input-lg" name="username" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <b><label class="control-label">E-Mail Address</label></b>
+                <div>
+                    <input type="email" placeholder="Enter Email" class="form-control input-lg" name="email" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <b><label class="control-label">Password</label></b>
+                <div>
+                    <input type="password" placeholder="Enter Password" class="form-control input-lg" name="password1" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <b><label class="control-label">Password</label></b>
+                <div>
+                    <input type="password" placeholder="Retype Password" class="form-control input-lg" name="password2" required>
+                </div>
+            </div>
+            <p class="navf"><b>Already have an account ?
+                <a href="{% url 'accounts:login' %}">SignIn</a><br><br></b>
+            </p>
+            <div class="form-group text-center">
+                <div>
+                    <button type="submit" class="btn btn-success">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

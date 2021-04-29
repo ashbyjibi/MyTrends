@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div>
+   <p class="text-center search_txt1">You have searched for: <b> {{query}} </b></p>
+</div>
+<section class="section">
+    <div class="row">
+        {% for product in products %}
+           <div>
+               <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                   <div class="product" >
+                       <a class="img-wrapper"> <img  src="{{product.image.url}}" alt="{{product.name}}" style="width:240px;height:280px"></a>
+                       <div class="info">
+                           <div class="title">{{product.name}}</div>
+                           <div class="price sale">${{product.price}}</div>
+                           {% if product.oldprice > product.price  %}
+                               <div class="price old">${{product.oldprice}}</div>
+                           {% endif %}
+                       </div>
+                      <div class="actions-wrapper">
+                          <a  href="{{product.get_url}}" class=" fas fa-shopping-bag">View Details</a>
+                      </div>
+                   </div>
+               </div>
+           </div>
+           {% empty %}
+           <div>
+               <p class="text-center">0 results found.</p>
+           </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

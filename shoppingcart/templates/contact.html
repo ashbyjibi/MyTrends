@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container con-container">
+    <div class="row">
+        <img src="{% static 'images/contact.jpg' %}"  alt="contact" class="con-img">
+    </div><br>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <h3><b>CONTACT US</b></h3><br><br>
+        </div>
+        <div class="col-4">
+             <h6><b>ADDRESS</b></h6><br>
+             <p>Grand Mark Street,Veva Layout,Bangalore</p>
+        </div>
+        <div class="col-4">
+             <h6><b>PHONE</b></h6><br>
+             <p><b>+91 8976125677</b></p>
+        </div>
+        <div class="col-4">
+             <h6><b>EMAIL</b></h6><br>
+             <p>For support or any questions:<br>Email us at <b>mytrends@gmail.com</b><br></p><br>
+        </div>
+    </div>
+</div>
+{% endblock %}

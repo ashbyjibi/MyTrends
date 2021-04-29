@@ -1,0 +1,14 @@
+{% load static %}
+<div class="header-bot">
+    <img src="{% static 'images/logo.jpg' %}" alt="" class="logo">
+    <img src="{% static 'images/heading.jpg' %}" alt="" class="heading-middle">
+    <div class="search search-pad">
+        <form action="{% url 'search_app:searchResult' %}" method="get">
+        {% csrf_token %}
+            <input type="text" class="search-term"  placeholder="Search Items..." name="searchme">
+            <button type="submit" class="searchButton">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</div>

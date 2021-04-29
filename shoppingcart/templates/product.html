@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="prev">
+   <h5 onclick="history.back(-1)"><i class="fa fa-arrow-left" aria-hidden="true" style="cursor:pointer"></i>&nbsp;&nbsp;&nbsp;&nbsp;  Categories|{{product.category}}|{{product.name}}</h5>
+</div>
+<div class="container">
+   <br>
+   <div class="row" style="margin:7%">
+       <div class="col-12 col-sm-12 col-md-12 col-lg-6  text-center">
+           <a href={{product.image.url}}><img src="{{product.image.url}}" alt="{{product.name}}" class="product_image"></a>
+       </div>
+       <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+           <div>
+               <div class="product_text">
+                   <h3><b>{{product.name}}</b></h3><br>
+               </div>
+               <div class="text-justify">
+                   <p>{{product.desc}}</p>
+               </div>
+               <div class="form-group">
+               <h5><label class="control-label"><b>Size:</b></label></h5>
+                <div>
+                    <input type="radio"  name="size" value="xs" required>
+                    <label><b>XS</b></label>&nbsp;&nbsp;
+                    <input type="radio"  name="size" value="s">
+                    <label><b>S</b></label>&nbsp;&nbsp;
+                    <input type="radio"  name="size" value="m">
+                    <label><b>M</b></label>&nbsp;&nbsp;
+                    <input type="radio"  name="size" value="l">
+                    <label><b>L</b></label>&nbsp;&nbsp;
+                    <input type="radio"  name="size" value="xl">
+                    <label><b>XL</b></label>&nbsp;&nbsp;
+                    <input type="radio"  name="size" value="xxl">
+                    <label><b>XXL</b></label>&nbsp;&nbsp;
+                    <input type="radio"  name="size" value="free">
+                    <label><b>Free</b></label>
+
+                </div>
+            </div>
+           </div>
+           {% if product.oldprice > product.price  %}
+               <div class="product_text2">
+                   <h5><b>${{product.oldprice}}</b></h5>
+               </div>
+           {% endif %}
+           <div style="color:blue">
+               <h5><b>${{product.price}}</b></h5>
+           </div>
+           {% if product.stock <= 0 %}
+               <p style="color:#ff0066"><b>Out of Stock</b></p>
+           {% else %}
+           <center>
+               <a href="{% url 'cart:add_cart' product.id %}" class="btn btn-danger">Add to Cart</a></button>
+           </center>
+           {% endif %}
+       </div>
+   </div>
+</div>
+{% endblock %}
+
+

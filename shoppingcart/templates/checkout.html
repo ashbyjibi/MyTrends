@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="go-back">
+   <h onclick="history.back(-1)"><i class="fa fa-arrow-left" aria-hidden="true" style="cursor:pointer"></i></h>
+</div>
+<div class="container" style="background-color:#f0f5f5">
+    <div class="row" style="margin:10px">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6"><br>
+            <h3><b>Shipping Address</b></h3><br><br>
+            <form role="form" action="{% url 'accounts:register' %}" method="POST">
+            {% csrf_token %}
+                <input type="hidden" name="_token" value="">
+                    <div class="form-group">
+                        <b><label class="control-label">First Name</label></b>
+                        <div>
+                            <input type="text"  placeholder="{{user.first_name}}" class="form-control input-lg" name="firstname" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <b><label class="control-label">Last Name</label></b>
+                        <div>
+                            <input type="text"  placeholder="{{user.last_name}}" class="form-control input-lg" name="lastname" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <b><label class="control-label">Address</label></b>
+                        <div>
+                            <textarea type="text"  placeholder="Enter Your Address" class="form-control input-lg" name="name" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <b><label class="control-label">Phone Number</label></b>
+                        <div>
+                            <input type="text" placeholder="Enter Phone Number" class="form-control input-lg" name="number" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <b><label class="control-label">State</label></b>
+                        <div>
+                            <select name="state" id="state" class="form-control input-lg">
+                                <option value="">Select Your State</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="">None</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <b><label class="control-label">City</label></b>
+                        <div>
+                            <input type="text" placeholder="Enter Your City" class="form-control input-lg" name="city" required>
+                        </div>
+                    </div><br>
+            </form>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6"><br>
+            <h3><b>Payment Details</b></h3>
+            <br><br>
+            <div class="form-group">
+                <b><label class="control-label">Select Your Card</label></b>
+                <div>
+                    <input type="radio"  name="payment" value="credit">
+                    <label>Credit Card</label><br>
+                    <input type="radio"  name="payment" value="debit">
+                    <label>Debit Card</label><br>
+                    <input type="radio"  name="payment" value="master">
+                    <label>Master Card</label><br>
+                    <input type="radio"  name="payment" value="on_delivery_time">
+                    <label>Cash On Delivery</label><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="control-label col-sm-6">
+                    <div class="form-group">
+                        <b><label class="control-label">Name on Card</label></b>
+                        <div>
+                            <input type="text"  class="form-control input-lg" name="card" required>
+                        </div>
+                        <p>Full name as displayed on card</p>
+                    </div>
+                </div>
+                <div class="control-label col-sm-6">
+                   <div class="form-group">
+                       <b><label class="control-label">Credit Card Number</label></b>
+                       <div>
+                           <input type="text" class="form-control input-lg"name="cardnumber" required>
+                       </div>
+                   </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="control-label col-sm-6">
+                    <div class="form-group">
+                        <b><label class="control-label">Expiration</label></b>
+                        <div>
+                            <input type="text" class="form-control input-lg"  name="expiration" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-label col-sm-6">
+                    <div class="form-group">
+                        <b><label class="control-label">CVV</label></b>
+                        <div>
+                            <input type="text" class="form-control input-lg" name="cvv" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'order_msg.html' %}
+    </div>
+    <br><br>
+</div>
+<br><br>
+{% endblock %}

@@ -1,0 +1,43 @@
+<footer class="page-footer foot">
+    <div class="container text-center text-md-left pt-4 pt-md-5">
+        <div class="row mt-1 mt-md-0 mb-4 mb-md-0">
+            <div class="col-md-3 mt-3 mt-md-0 mb-0 mb-md-4 foot-col foottxt1 navf">
+                <h5>MyTrends</h5>
+                <hr class="mb-4 mt-0 d-inline-block mx-auto w-60">
+                <td>
+                    <p class="foot-desc mb-0 foottxt2 navf">
+                        MyTrends is one of India’s leading fashion houses today.
+                        We specialize in combining cutting
+                        edge fashion with an affordable price tag.
+                    </p>
+                </td>
+          </div>
+          <hr class="clearfix w-100 d-md-none">
+          <div class="col-md-3 mt-3 mt-md-0 mb-0 mb-md-4  foottxt1 navf">
+            <h5>Our Information</h5>
+            <hr class="mb-4 mt-0 d-inline-block mx-auto w-60">
+            <ul class="list-unstyled navf">
+                <a href="{% url 'shopapp:allProductsCat' %}">All Products</a><br>
+                {% for cat in links %}
+                    <a href="{{cat.get_url}}">{{cat.name}}</a><br>
+                {% endfor %}
+            </ul>
+          </div>
+          <hr class="clearfix w-100 d-md-none">
+          <div class="col-md-3 mt-3 mt-md-0 mb-0 mb-md-4  foottxt1 navf" >
+              <h5>&nbsp;&nbsp;&nbsp;&nbsp;Contacts</h5>
+              <hr class="mb-4 mt-0 d-inline-block mx-auto w-60">
+              <ul class="fa-ul foot-desc ml-4 foottxt2 navf">
+                  <li><i class="fa fa-globe" aria-hidden="true"></i> Grand Mark Street,Veva Layout,Bangalore</li>
+                  <li><i class="fa fa-phone" aria-hidden="true"></i> Call :   +91 8976125677</li>
+                  <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:mytrends@gmail.com"> mytrends@gmail.com</a></li>
+                  <li><i class="fa fa-clock-o"></i></span> Monday-Sunday:8.00 AM to 8.00 PM</li>
+              </ul>
+          </div>
+        </div>
+    </div>
+    <div class="footer-copyright text-center py-3 foottxt2 navf">
+        <p>&copy; MyTrends - Your's Favourite online shop.All Rights Reserved</p>
+    </div>
+</footer>
+

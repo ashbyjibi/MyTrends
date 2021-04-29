@@ -1,0 +1,21 @@
+<div class="header">
+	<div class="container">
+		<ul>
+		{% if user.is_authenticated %}
+			<li><i class="fa fa-user" aria-hidden="true"></i> Welcome, {{user.username}} </li>
+			<li><a href="{% url 'accounts:logout' %}"><i class="fa fa-unlock" aria-hidden="true"></i>Logout</a></li>
+        {% else %}
+			<li><a href="{% url 'accounts:login' %}"><i class="fa fa-lock"  aria-hidden="true"></i>SignIn</a></li>
+			<li><a href="{% url 'accounts:register' %}"><i class="fa fa-pencil-square-o"  aria-hidden="true"></i>SignUp</a></li>
+		{% endif %}
+			<li><i class="fa fa-phone" aria-hidden="true"></i> Call : +91 8976125677</li>
+			<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:mytrends@gmail.com">mytrends@gmail.com</a></li>
+		</ul>
+	</div>
+</div>
+
+
+
+
+
+

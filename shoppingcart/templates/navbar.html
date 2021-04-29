@@ -1,0 +1,37 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark ban-top">
+<!--for better mobile display-->
+   <button class="navbar-toggler nav-tog" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse nav-set navf" id="navbarContent">
+       <ul class="navbar-nav mr-auto">
+          <li class="nav-item active  navbtn">
+              <a href="{% url 'shopapp:allProductsCat' %}" style="color:#fff">All Products</a>
+          </li>
+          <li class="dropdown">
+              <button class="navbtn dropdown-toggle">Categories</button>
+              <div class="dropdown-content">
+                  <b>
+                  {% for cat in links %}
+                     <a href="{{cat.get_url}}">{{cat.name}}</a>
+                  {% endfor %}
+              </b>
+              </div>
+          </li>
+          <li class="nav-item">
+              <a href="{% url 'about:about' %}" class="nav-link navbtn"  style="color:#fff">About Us</span></a>
+          </li>
+          <li class="nav-item">
+              <a href="{% url 'contact:contact' %}" class="nav-link navbtn"  style="color:#fff">Contact Us</span></a>
+          </li>
+       </ul>
+
+       <div class="top_nav_right">
+            <div class="wthreecartaits wthreecartaits2 box_1">
+                <a href="{% url 'cart:cart_detail' %}"> <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down cursor" aria-hidden="true"></i></button></a>
+                <b>{{item_count}}</b>
+            </div>
+	   </div>
+   </div>
+</nav>
